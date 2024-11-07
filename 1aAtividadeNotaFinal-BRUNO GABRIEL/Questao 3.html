@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contato</title>
+</head>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #bccce0;
+}
+</style>
+<body>
+
+    <h2>Formulário de Contato</h2>
+
+    <form id="contactForm">
+        <label for="name">Nome:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">E-mail:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="message">Mensagem:</label><br>
+        <textarea id="message" name="message" rows="4"></textarea><br><br>
+
+        <button type="button" onclick="validateForm()">Enviar</button>
+    </form>
+
+    <div id="messageBox"></div>
+
+    <script>
+    function validateForm() {
+            
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var message = document.getElementById("message").value;
+        var messageBox = document.getElementById("messageBox");
+
+        messageBox.innerHTML = ''
+
+    if (name === "" || email === "" || message === "") {
+        messageBox.innerHTML = "Por favor, preencha todos as áreas!";
+        messageBox.style.color = "black"; 
+     return;
+    }
+
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+        messageBox.innerHTML = "Por favor, insira um e-mail válido!";
+        messageBox.style.color = "black";
+     return;
+    }
+
+        messageBox.innerHTML = "Mensagem enviada com sucesso!";
+        messageBox.style.color = "green"; 
+    }
+    </script>
+
+</body>
+</html>
